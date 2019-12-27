@@ -4,33 +4,32 @@
 
 int main () {
     int n;
-    bool m = false;
+    bool otl = true, dv = false;
     std::cout << "Введите количество предметов ";
     std::cin >> n;
     std::vector<int> a(n);
     srand(time(NULL));
     for (int i = 0; i < n; i++) {
-        a[i] = rand() % (5 - 1 + 1) +1;
+        a[i] = rand() % (5 - 2 + 1) + 2;
         std::cout << i + 1<< ". " << a[i] << std::endl;
     }
     for (int i = 0; i < a.size(); i++) {
         if (a[i] < 3) {
-            m = true;
+            dv = true;
             break;
         }
-    }
-    if (m == true) {
-    std::cout << "Ученик двоечник" << std::endl;
-    }
-    m = false;
-    for (int i = 0; i < a.size(); i++) {
-        if (a[i] == 5) {
-            m = true;
+        if (a[i] != 5) {
+            otl = false;
         }
     }
-    if (m == true) {
-        std::cout << "Ученик " << std::endl;
+    if (otl) {
+        std::cout << "Ученик отличник " << std::endl;
     }
-
+    if (dv) {
+       std::cout << "Ученик двоечник " << std::endl; 
+    }
+    if (otl == false && dv == false) {
+        std::cout << "Это нормальный ученик " << std::endl;
+    }
     return 0;
 }
