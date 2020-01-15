@@ -3,8 +3,7 @@
 #include <time.h>
 
 int main () {
-    int n, b = 0;
-    bool m = true;
+    int n, b = 0, min = 0;
     std::cout << "Введите количество элементов массива ";
     std::cin >> n;
     std::vector<int> a(n);
@@ -13,16 +12,15 @@ int main () {
         a[i] = rand() % (100 - 1 + 1) + 1;
         std::cout << i + 1<< ". " << a[i] << std::endl;
     }
-    while (m) {
-        m = false;
-        for (int i = 0; i < a.size() - 1; i++) {
-               if (a[i] > a[i+1]) {
-               b = a[i];
-               a[i] = a[i+1];
-               a[i+1] = b;
-               m = true;
+    for (int i = 0; i < a.size()-1; i++) {
+        for (int j = 1; j < a.size(); j++) {
+            if (a[min] > a[j]) {
+            min = j;
             }
-        } 
+        }
+        b = a[min];
+        a[min] = a[i];
+        a[i] = b;
     }
     for (int i = 0; i < n; i++) {
         std::cout << i + 1<< ". " << a[i] << std::endl;
