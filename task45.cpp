@@ -3,7 +3,7 @@
 #include <time.h>
 
 int main () {
-    int n, b = 0, min = 0;
+    int n, b = 0;
     std::cout << "Введите количество элементов массива ";
     std::cin >> n;
     std::vector<int> a(n);
@@ -13,16 +13,15 @@ int main () {
         std::cout << i + 1<< ". " << a[i] << std::endl;
     }
     for (int i = 0; i < a.size(); i++) {
-        min = i;
-        for (int j = i; j < a.size(); j++) {
-            if (a[min] > a[j]) {
-            min = j;
-            }
+        int j = a.size() - 1;
+        while ( (a[j - 1] > a[j]) && (j>0) ) {
+        b = a[j - 1];
+        a[j - 1] = a[j];
+        a[j] = b;    
+        j--;
         }
-        b = a[min];
-        a[min] = a[i];
-        a[i] = b;
     }
+    
     for (int i = 0; i < n; i++) {
         std::cout << i + 1<< ". " << a[i] << std::endl;
     }
