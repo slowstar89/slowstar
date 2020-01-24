@@ -12,13 +12,13 @@ int main () {
         a[i] = rand() % (100 - 1 + 1) + 1;
         std::cout << i + 1<< ". " << a[i] << std::endl;
     }
-    for (int i = 0; i < a.size(); i++) {
-        int j = a.size() - 1;
-        while ( (a[j - 1] > a[j]) && (j>0) ) {
-        b = a[j - 1];
-        a[j - 1] = a[j];
-        a[j] = b;    
-        j--;
+    for (int i = 1; i < a.size(); i++) {
+        int j = i;
+        while (a[j] < a[j - 1] && j > 0) {
+            b = a[j - 1];
+            a[j - 1] = a[j];
+            a[j] = b;    
+            j--;
         }
     }
     
