@@ -19,22 +19,20 @@ int main () {
     std::cout << "Введите число, которое будем искать " << std::endl;
     std::cin >> b;
     end = a.size() - 1;
-    m = end / 2;
-    while (end > begin) {
-       if (a[m] == b) {
+    while (end >= begin) {
+        m = (begin + end) / 2;
+        if (a[m] == b) {
             std::cout << "Номер введенного числа = " << m + 1 << std::endl;    
             break;
         }
-        if (a[m] > b) {
-            end = m;
-            m = (end - begin) / 2;
+        if (b > a[m]) {
+            begin = m + 1;
         }
-        if (a[m] < b) {
-            begin = m;
-            m = begin + (end - begin) / 2;
+        else if (b < a[m]) {
+            end = m - 1;
         }
     }
-    if (end == begin) {
+    if (end < begin) {
         std::cout << "Такого числа нет" << std::endl;
     }    
     return 0;
