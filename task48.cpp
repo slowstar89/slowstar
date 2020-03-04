@@ -6,29 +6,21 @@ int main()
 	std::getline(std::cin, la_frasa);
 	int i = 0, j = la_frasa.size() - 1;
 	bool pal = true;
-	while (i < la_frasa.size() - 1) {
-		if (la_frasa[i] != ' ') {
-			if (la_frasa[j] != ' ') {
-				if (la_frasa[i] == la_frasa[j]) {
-					pal = true;
-					i++;
-					j--;
-				}
-				else {
-					pal = false;
-					
-					break;
-				}
-			}
-			else {
-				j--;
-			}
-		}
-		else {
+	while (i < j) {
+		while (la_frasa[i] == ' ') {
 			i++;
 		}
-	}
-	if (pal == false) {
+		while (la_frasa[j] == ' ') {
+			j--;
+		}	
+		if (la_frasa[i] != la_frasa[j]) {
+				pal = false;
+				break;
+		}
+		j--;
+		i++;
+		}
+	if (!pal) {
 		std::cout << "This is not palindrom " << std::endl;
 	}
 	else {
