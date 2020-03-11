@@ -1,6 +1,7 @@
 #include <iostream>
 int main() {
     long n;
+    bool minus = false;
     int n1 = 0, n11 = 0, n111 = 0, i = 0;
     std::cout << "Введите число " << std::endl;
     std::cin >> n;
@@ -12,15 +13,24 @@ int main() {
     if (n == 0) {
         std::cout << "zero";
     }
+    if (n < 0) {
+        minus = true;
+        n = -n;
+    }
     while (n != 0) {
         n1 = n % 1000;
         n11 = n1 % 100;
         if (n11 > 19 || n11 < 10) {
             n111 = n11 % 10;
-            s1 = ones [n111];
             n11 = n11 / 10;
-            if (n11 != 0){
-            s1 = tens[n11] + ' ' + s1;
+            s1 = ones[n111];
+            if (n11 != 0) {
+                if (n111 != 0) {
+                    s1 = tens[n11] + ' ' + s1;
+                    }
+                else {
+                    s1 = tens[n11];
+                    }
             }
         }
         else {
@@ -39,6 +49,9 @@ int main() {
             s = s + s1;
         }
         i++;
+    }
+    if (minus) {
+        s = "minus " + s;
     }
     std::cout << s << std::endl;
     return 0;
